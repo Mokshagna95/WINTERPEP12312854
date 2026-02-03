@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+void calculate(double a, double b, char operation) {
+
+    if (operation == '+') {
+        cout << "Addition = " << (a + b);
+    }
+    else if (operation == '-') {
+        cout << "Subtraction = " << (a - b);
+    }
+    else if (operation == '*') {
+        cout << "Multiplication = " << (a * b);
+    }
+    else if (operation == '/') {
+        if (b != 0)
+            cout << "Division = " << (a / b);
+        else
+            cout << "Division by zero not allowed";
+    }
+    else {
+        cout << "Invalid operator";
+    }
+}
+
+int main() {
+    double x, y;
+    char operation;
+
+    cout << "Enter first number: ";
+    cin >> x;
+
+    cout << "Enter second number: ";
+    cin >> y;
+
+    cout << "Enter operator (+, -, *, /): ";
+    cin >> operation;
+
+    calculate(x, y, operation);
+
+    return 0;
+}
