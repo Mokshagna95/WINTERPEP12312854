@@ -1,0 +1,36 @@
+class Solution {
+  public:
+    int minSwap(vector<int>& arr, int k) {
+        int n = arr.size();
+        
+        // Step 1: Count elements <= k
+        int good = 0;
+        for (int x : arr) {
+            if (x <= k)
+                good++;
+        }
+        
+        // If no or all elements are good
+        if (good == 0 || good == n)
+            return 0;
+        
+        // Step 2: Count bad elements in first window
+        int bad = 0;
+        for (int i = 0; i < good; i++) {
+            if (arr[i] > k)
+                bad++;
+        }
+        
+        int ans = bad;
+        
+        // Step 3: Sliding window
+        for (int i = 0, j = good; j < n; i++, j++) {
+            if (arr[i] > k) bad--;
+            if (arr[j] > k) bad++;
+            
+            ans = min(ans, bad);
+        }
+        
+        return ans;
+    }
+};
